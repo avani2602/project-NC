@@ -6,29 +6,31 @@ const Body = Matter.Body;
 const Constraint = Matter.Constraint;
 
 var rod;
-var bobDiameter;
 var bob1, bob2, bob3, bob4, bob5;
 var rope1, rope2, rope3, rope4, rope5;
+var bobDiameter;
 
 function setup() {
 	createCanvas(800, 700);
 	engine = Engine.create();
 	world = engine.world;
 
+	bobDiameter = 40;
+
 	rod = new Rod(400,50,600,30);
 
 
-	bob1 = new Bob(260, 450, 70, 70);	
-	bob2 = new Bob(330, 450, 70, 70);
-	bob3 = new Bob(400, 450, 70, 70);
-	bob4 = new Bob(470, 450, 70, 70);
-	bob5 = new Bob(540, 450, 70, 70);
+	bob1 = new Bob(260, 450, 70);	
+	bob2 = new Bob(330, 450, 70);
+	bob3 = new Bob(400, 450, 70);
+	bob4 = new Bob(470, 450, 70);
+	bob5 = new Bob(540, 450, 70);
 
-	rope1 = new Rope(bob1.body,{x: 260, y: 50});
-	rope2 = new Rope(bob2.body,{x: 330, y: 50});
-	rope3 = new Rope(bob3.body,{x: 400, y: 50});
-	rope4 = new Rope(bob4.body,{x: 470, y: 50});
-	rope5 = new Rope(bob5.body,{x: 540, y: 50});
+	rope1 = new Rope(bob1.body, rod.body,-bobDiameter*2, -100);
+	rope2 = new Rope(bob2.body, rod.body,-bobDiameter*4, -100);
+	rope3 = new Rope(bob3.body, rod.body,-bobDiameter*2, 200);
+	rope4 = new Rope(bob4.body, rod.body,-bobDiameter*20,-100);
+	rope5 = new Rope(bob5.body, rod.body,-bobDiameter*2, -100);
 
 	Engine.run(engine);
   
@@ -51,6 +53,7 @@ function draw() {
   rope3.display();
   rope4.display();
   rope5.display();
+
 
  
 }

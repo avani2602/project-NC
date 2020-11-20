@@ -15,7 +15,7 @@ class Bob{
 
         ellipseMode(CENTER);
         fill("lightGrey");
-        ellipse(pos.x, pos.y, this.radius, this.radius);
+        ellipse(pos.x, pos.y, this.radius,);
     }
 }
 
